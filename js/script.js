@@ -41,7 +41,7 @@ function showGameScore(playerScore, computerScore) {
 }
 
 //Update game score after round
-function updateScore(verdict) {
+function updateGameScore(verdict) {
   const formattedVerdict = verdict.toUpperCase();
   if (formattedVerdict.includes("TIE")) {
     playerScore++;
@@ -59,7 +59,7 @@ function showRoundResult(verdict) {
   const resultsContent = document.createElement("div");
   resultsContent.textContent = verdict;
   body.appendChild(resultsContent);
-  updateScore(verdict);
+  updateGameScore(verdict);
 }
 
 //Play a single round of rps
