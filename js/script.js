@@ -10,11 +10,26 @@ function getComputerChoice() {
   return choices[randomNumber];
 }
 
+function showWinner() {
+  const winnerDiv = document.createElement("div");
+  let winnerString = "";
+  if (playerScore === 5 && computerScore === 5) {
+    winnerString = "BOTH!";
+  } else if (playerScore === 5) {
+    winnerString = "Player";
+  } else if (computerScore === 5) {
+    winnerString = "Computer";
+  }
+  winnerDiv.textContent = `Winner: ${winnerString}`;
+  body.appendChild(winnerDiv);
+}
+
 //Show game score on screen
 function showGameScore(playerScore, computerScore) {
   const score = document.createElement("div");
   score.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
   body.appendChild(score);
+  if (playerScore >= 5 || computerScore >= 5) showWinner();
 }
 
 function updateScore(verdict) {
