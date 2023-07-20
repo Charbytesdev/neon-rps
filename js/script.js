@@ -10,6 +10,11 @@ function getComputerChoice() {
   return choices[randomNumber];
 }
 
+function resetGameScore() {
+  computerScore = 0;
+  playerScore = 0;
+}
+
 function showWinner() {
   const winnerDiv = document.createElement("div");
   let winnerString = "";
@@ -22,6 +27,7 @@ function showWinner() {
   }
   winnerDiv.textContent = `Winner: ${winnerString}`;
   body.appendChild(winnerDiv);
+  resetGameScore();
 }
 
 //Show game score on screen
