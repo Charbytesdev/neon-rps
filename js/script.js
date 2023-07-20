@@ -1,3 +1,5 @@
+const body = document.querySelector("body");
+
 function getComputerChoice() {
   const choices = ["ROCK", "PAPER", "SCISSORS"];
   const randomNumber = Math.floor(Math.random() * choices.length);
@@ -6,12 +8,16 @@ function getComputerChoice() {
 
 function showResult(verdict) {
   const resultsContent = document.createElement("div");
-  const body = document.querySelector("body");
   resultsContent.textContent = verdict;
   body.appendChild(resultsContent);
+  showScore(5, 3);
 }
 
-function displayScore()
+function showScore(playerScore, computerScore) {
+  const score = document.createElement("div");
+  score.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
+  body.appendChild(score);
+}
 
 function playRound(playerSelection, computerSelection) {
   const constPlayerSelection = playerSelection.toUpperCase();
@@ -38,7 +44,6 @@ function playRound(playerSelection, computerSelection) {
 }
 
 const buttons = document.querySelectorAll("button");
-console.log(buttons);
 buttons.forEach((button) =>
   button.addEventListener("click", () =>
     playRound(button.classList[0], getComputerChoice())
