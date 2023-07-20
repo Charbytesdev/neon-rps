@@ -24,6 +24,13 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+const buttons = document.querySelectorAll("button");
+console.log(buttons);
+buttons.forEach((button) =>
+  button.addEventListener("click", () =>
+    playRound(button.classList[0], getComputerChoice())
+  )
+);
 // function game() {
 //   let playerCount = 0;
 //   let computerCount = 0;
