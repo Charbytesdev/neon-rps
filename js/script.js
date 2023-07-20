@@ -6,17 +6,17 @@ function getComputerChoice() {
   return choices[randomNumber];
 }
 
+function showScore(playerScore, computerScore) {
+  const score = document.createElement("div");
+  score.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
+  body.appendChild(score);
+}
+
 function showResult(verdict) {
   const resultsContent = document.createElement("div");
   resultsContent.textContent = verdict;
   body.appendChild(resultsContent);
   showScore(5, 3);
-}
-
-function showScore(playerScore, computerScore) {
-  const score = document.createElement("div");
-  score.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
-  body.appendChild(score);
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -34,12 +34,10 @@ function playRound(playerSelection, computerSelection) {
     showResult(
       `VICTORY! ${constPlayerSelection} BEATS ${constComputerSelection}`
     );
-    return "VICTORY";
   } else {
     showResult(
       `DEFEAT.. ${constComputerSelection} BEATS ${constPlayerSelection}`
     );
-    return "DEFEAT";
   }
 }
 
