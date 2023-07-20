@@ -1,5 +1,8 @@
 const body = document.querySelector("body");
 
+let computerScore = 0;
+let playerScore = 0;
+
 //Create and return random computer choice
 function getComputerChoice() {
   const choices = ["ROCK", "PAPER", "SCISSORS"];
@@ -14,12 +17,25 @@ function showRoundScore(playerScore, computerScore) {
   body.appendChild(score);
 }
 
+function updateScore(verdict) {
+  const formattedVerdict = verdict.toUpperCase();
+  if (formattedVerdict.includes("TIE")) {
+    playerScore++;
+    computerScore++;
+  } else if (formattedVerdict.includes("VICTORY")) {
+    playerScore++;
+  } else if (formattedVerdict.includes("DEFEAT")) {
+    computerScore++;
+  }
+  showRoundScore(playerScore, computerScore);
+}
+
 //Show round result on screen
 function showGameResult(verdict) {
   const resultsContent = document.createElement("div");
   resultsContent.textContent = verdict;
   body.appendChild(resultsContent);
-  showRoundScore(5, 3);
+  updateScore(verdict);
 }
 
 // Play a single round of rps figure out the winner
