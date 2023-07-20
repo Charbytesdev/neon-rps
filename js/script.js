@@ -24,21 +24,21 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function game() {
-  let playerCount = 0;
-  let computerCount = 0;
-  for (let i = 0; i < 5; i++) {
-    let playerSelection = prompt("ENTER CHOICE: ROCK, PAPER, SCISSORS?");
-    const formattedPlayerSelec = playerSelection.trim().toUpperCase();
-    const roundResult = playRound(formattedPlayerSelec, getComputerChoice());
-    if (roundResult === "VICTORY") playerCount++;
-    else if (roundResult === "DEFEAT") computerCount++;
-    else {
-      playerCount++;
-      computerCount++;
-    }
-    alert(`RESULTS: PLAYER: ${playerCount}, COMPUTER ${computerCount}`);
-  }
-}
+// function game() {
+//   let playerCount = 0;
+//   let computerCount = 0;
+//   for (let i = 0; i < 5; i++) {
+//     let playerSelection = prompt("ENTER CHOICE: ROCK, PAPER, SCISSORS?");
+//     const formattedPlayerSelec = playerSelection.trim().toUpperCase();
+//     const roundResult = playRound(formattedPlayerSelec, getComputerChoice());
+//     if (roundResult === "VICTORY") playerCount++;
+//     else if (roundResult === "DEFEAT") computerCount++;
+//     else {
+//       playerCount++;
+//       computerCount++;
+//     }
+//     alert(`RESULTS: PLAYER: ${playerCount}, COMPUTER ${computerCount}`);
+//   }
+// }
 
-game();
+// game();
