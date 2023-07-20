@@ -1,6 +1,6 @@
 const body = document.querySelector("body");
 
-//Create a random computer choice
+//Create and return random computer choice
 function getComputerChoice() {
   const choices = ["ROCK", "PAPER", "SCISSORS"];
   const randomNumber = Math.floor(Math.random() * choices.length);
@@ -8,27 +8,27 @@ function getComputerChoice() {
 }
 
 //Show game score on screen
-function showScore(playerScore, computerScore) {
+function showRoundScore(playerScore, computerScore) {
   const score = document.createElement("div");
   score.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
   body.appendChild(score);
 }
 
 //Show round result on screen
-function showResult(verdict) {
+function showGameResult(verdict) {
   const resultsContent = document.createElement("div");
   resultsContent.textContent = verdict;
   body.appendChild(resultsContent);
-  showScore(5, 3);
+  showRoundScore(5, 3);
 }
 
 // Play a single round of rps figure out the winner
-// Call showResult() and updateScore() with the verdict
+// Call showGameResult() with the verdict
 function playRound(playerSelection, computerSelection) {
   const constPlayerSelection = playerSelection.toUpperCase();
   const constComputerSelection = computerSelection.toUpperCase();
   if (constPlayerSelection === constComputerSelection) {
-    showResult(`TIE YOU BOTH CHOSE ${constPlayerSelection}`);
+    showGameResult(`TIE YOU BOTH CHOSE ${constPlayerSelection}`);
     return "TIE";
   } else if (
     (constPlayerSelection === "ROCK" &&
@@ -36,11 +36,11 @@ function playRound(playerSelection, computerSelection) {
     (constPlayerSelection === "PAPER" && constComputerSelection === "ROCK") ||
     (constPlayerSelection === "SCISSORS" && constComputerSelection === "PAPER")
   ) {
-    showResult(
+    showGameResult(
       `VICTORY! ${constPlayerSelection} BEATS ${constComputerSelection}`
     );
   } else {
-    showResult(
+    showGameResult(
       `DEFEAT.. ${constComputerSelection} BEATS ${constPlayerSelection}`
     );
   }
