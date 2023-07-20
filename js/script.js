@@ -11,7 +11,7 @@ function getComputerChoice() {
 }
 
 //Show game score on screen
-function showRoundScore(playerScore, computerScore) {
+function showGameScore(playerScore, computerScore) {
   const score = document.createElement("div");
   score.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
   body.appendChild(score);
@@ -27,11 +27,11 @@ function updateScore(verdict) {
   } else if (formattedVerdict.includes("DEFEAT")) {
     computerScore++;
   }
-  showRoundScore(playerScore, computerScore);
+  showGameScore(playerScore, computerScore);
 }
 
 //Show round result on screen
-function showGameResult(verdict) {
+function showRoundResult(verdict) {
   const resultsContent = document.createElement("div");
   resultsContent.textContent = verdict;
   body.appendChild(resultsContent);
@@ -44,7 +44,7 @@ function playRound(playerSelection, computerSelection) {
   const constPlayerSelection = playerSelection.toUpperCase();
   const constComputerSelection = computerSelection.toUpperCase();
   if (constPlayerSelection === constComputerSelection) {
-    showGameResult(`TIE YOU BOTH CHOSE ${constPlayerSelection}`);
+    showRoundResult(`TIE YOU BOTH CHOSE ${constPlayerSelection}`);
     return "TIE";
   } else if (
     (constPlayerSelection === "ROCK" &&
@@ -52,11 +52,11 @@ function playRound(playerSelection, computerSelection) {
     (constPlayerSelection === "PAPER" && constComputerSelection === "ROCK") ||
     (constPlayerSelection === "SCISSORS" && constComputerSelection === "PAPER")
   ) {
-    showGameResult(
+    showRoundResult(
       `VICTORY! ${constPlayerSelection} BEATS ${constComputerSelection}`
     );
   } else {
-    showGameResult(
+    showRoundResult(
       `DEFEAT.. ${constComputerSelection} BEATS ${constPlayerSelection}`
     );
   }
