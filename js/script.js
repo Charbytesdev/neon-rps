@@ -13,11 +13,11 @@ function getComputerChoice() {
 function showWinner() {
   const winnerDiv = document.createElement("div");
   let winnerString = "";
-  if (playerScore === 5 && computerScore === 5) {
+  if (playerScore >= 5 && computerScore >= 5 && playerScore == computerScore) {
     winnerString = "BOTH!";
-  } else if (playerScore === 5) {
+  } else if (playerScore >= 5 && playerScore > computerScore) {
     winnerString = "Player";
-  } else if (computerScore === 5) {
+  } else if (computerScore >= 5 && computerScore > playerScore) {
     winnerString = "Computer";
   }
   winnerDiv.textContent = `Winner: ${winnerString}`;
