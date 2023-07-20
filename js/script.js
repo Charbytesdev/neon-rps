@@ -4,11 +4,20 @@ function getComputerChoice() {
   return choices[randomNumber];
 }
 
+function showResult(verdict) {
+  const resultsContent = document.createElement("div");
+  const body = document.querySelector("body");
+  resultsContent.textContent = verdict;
+  body.appendChild(resultsContent);
+}
+
+function displayScore()
+
 function playRound(playerSelection, computerSelection) {
-  const constPlayerSelection = playerSelection;
+  const constPlayerSelection = playerSelection.toUpperCase();
   const constComputerSelection = computerSelection.toUpperCase();
   if (constPlayerSelection === constComputerSelection) {
-    alert(`TIE YOU BOTH CHOSE ${constPlayerSelection}`);
+    showResult(`TIE YOU BOTH CHOSE ${constPlayerSelection}`);
     return "TIE";
   } else if (
     (constPlayerSelection === "ROCK" &&
@@ -16,10 +25,14 @@ function playRound(playerSelection, computerSelection) {
     (constPlayerSelection === "PAPER" && constComputerSelection === "ROCK") ||
     (constPlayerSelection === "SCISSORS" && constComputerSelection === "PAPER")
   ) {
-    alert(`VICTORY! ${constPlayerSelection} BEATS ${constComputerSelection}`);
+    showResult(
+      `VICTORY! ${constPlayerSelection} BEATS ${constComputerSelection}`
+    );
     return "VICTORY";
   } else {
-    alert(`DEFEAT.. ${constComputerSelection} BEATS ${constPlayerSelection}`);
+    showResult(
+      `DEFEAT.. ${constComputerSelection} BEATS ${constPlayerSelection}`
+    );
     return "DEFEAT";
   }
 }
@@ -31,6 +44,7 @@ buttons.forEach((button) =>
     playRound(button.classList[0], getComputerChoice())
   )
 );
+
 // function game() {
 //   let playerCount = 0;
 //   let computerCount = 0;
