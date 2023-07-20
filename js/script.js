@@ -10,11 +10,13 @@ function getComputerChoice() {
   return choices[randomNumber];
 }
 
+//Reset score after game ends
 function resetGameScore() {
   computerScore = 0;
   playerScore = 0;
 }
 
+//Show winner when someone reaches 5 points
 function showWinner() {
   const winnerDiv = document.createElement("div");
   let winnerString = "";
@@ -38,6 +40,7 @@ function showGameScore(playerScore, computerScore) {
   if (playerScore >= 5 || computerScore >= 5) showWinner();
 }
 
+//Update game score after round
 function updateScore(verdict) {
   const formattedVerdict = verdict.toUpperCase();
   if (formattedVerdict.includes("TIE")) {
@@ -59,8 +62,7 @@ function showRoundResult(verdict) {
   updateScore(verdict);
 }
 
-// Play a single round of rps figure out the winner
-// Call showGameResult() with the verdict
+//Play a single round of rps
 function playRound(playerSelection, computerSelection) {
   const constPlayerSelection = playerSelection.toUpperCase();
   const constComputerSelection = computerSelection.toUpperCase();
@@ -83,29 +85,10 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-// Everytime a button is clicked, call playRound() with corresponding button class
+//Everytime a button is clicked, call playRound() with corresponding button class
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) =>
   button.addEventListener("click", () =>
     playRound(button.classList[0], getComputerChoice())
   )
 );
-
-// function game() {
-//   let playerCount = 0;
-//   let computerCount = 0;
-//   for (let i = 0; i < 5; i++) {
-//     let playerSelection = prompt("ENTER CHOICE: ROCK, PAPER, SCISSORS?");
-//     const formattedPlayerSelec = playerSelection.trim().toUpperCase();
-//     const roundResult = playRound(formattedPlayerSelec, getComputerChoice());
-//     if (roundResult === "VICTORY") playerCount++;
-//     else if (roundResult === "DEFEAT") computerCount++;
-//     else {
-//       playerCount++;
-//       computerCount++;
-//     }
-//     alert(`RESULTS: PLAYER: ${playerCount}, COMPUTER ${computerCount}`);
-//   }
-// }
-
-// game();
