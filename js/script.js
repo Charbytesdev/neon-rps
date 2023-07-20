@@ -1,17 +1,20 @@
 const body = document.querySelector("body");
 
+//Create a random computer choice
 function getComputerChoice() {
   const choices = ["ROCK", "PAPER", "SCISSORS"];
   const randomNumber = Math.floor(Math.random() * choices.length);
   return choices[randomNumber];
 }
 
+//Show game score on screen
 function showScore(playerScore, computerScore) {
   const score = document.createElement("div");
   score.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
   body.appendChild(score);
 }
 
+//Show round result on screen
 function showResult(verdict) {
   const resultsContent = document.createElement("div");
   resultsContent.textContent = verdict;
@@ -19,6 +22,8 @@ function showResult(verdict) {
   showScore(5, 3);
 }
 
+// Play a single round of rps figure out the winner
+// Call showResult() and updateScore() with the verdict
 function playRound(playerSelection, computerSelection) {
   const constPlayerSelection = playerSelection.toUpperCase();
   const constComputerSelection = computerSelection.toUpperCase();
@@ -41,6 +46,7 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+// Everytime a button is clicked, call playRound() with corresponding button class
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) =>
   button.addEventListener("click", () =>
