@@ -16,6 +16,8 @@ function resetGameScore() {
   computerScore = 0;
   playerScore = 0;
   resultScreen.textContent = "";
+  document.removeEventListener("keydown", endGame);
+  document.removeEventListener("mousedown", endGame);
 }
 
 //Show winner when someone reaches 5 points
