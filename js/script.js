@@ -1,4 +1,4 @@
-const gameScreen = document.querySelector(".game-screen");
+const resultScreen = document.querySelector(".result-screen");
 
 let computerScore = 0;
 let playerScore = 0;
@@ -26,13 +26,13 @@ function showWinner() {
   } else if (computerScore >= 5 && computerScore > playerScore) {
     winnerString = "Computer";
   }
-  gameScreen.textContent = `Winner: ${winnerString}`;
+  resultScreen.textContent = `Winner: ${winnerString}`;
   resetGameScore();
 }
 
 //Show game score on screen
 function showGameScore(playerScore, computerScore) {
-  gameScreen.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
+  resultScreen.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
   if (playerScore >= 5 || computerScore >= 5) showWinner();
 }
 
@@ -52,7 +52,7 @@ function updateGameScore(verdict) {
 
 //Show round result on screen
 function showRoundResult(verdict) {
-  gameScreen.textContent = verdict;
+  resultScreen.textContent = verdict;
   updateGameScore(verdict);
 }
 
