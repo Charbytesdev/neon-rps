@@ -86,8 +86,20 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+const startButton = document.querySelector("button.start");
+const gameScreen = document.querySelector(".game-screen");
+const startScreen = document.querySelector(".start-screen");
+
+function startGame() {
+  gameScreen.style.display = "flex";
+  startScreen.style.display = "none";
+}
+
+startButton.addEventListener("click", startGame);
+
 //Everytime a button is clicked, call playRound() with corresponding button class
 const selectionButtons = document.querySelectorAll("button.selection");
+
 selectionButtons.forEach((button) =>
   button.addEventListener("click", () =>
     playRound(button.id, getComputerChoice())
