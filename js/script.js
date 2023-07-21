@@ -15,6 +15,7 @@ function getComputerChoice() {
 function resetGameScore() {
   computerScore = 0;
   playerScore = 0;
+  resultScreen.textContent = "";
 }
 
 //Show winner when someone reaches 5 points
@@ -44,7 +45,7 @@ playAgain.addEventListener("click", startGame);
 function endGame() {
   gameScreen.style.display = "none";
   endScreen.style.display = "flex";
-  showWinner();
+  resetGameScore();
 }
 
 //Show game score on screen
