@@ -108,7 +108,7 @@ button.neon:hover::after {
   flex-direction: column;
   gap: clamp(1em, 4vw, 6.25rem);
   align-items: center;
-  font-size: clamp(1.5rem, 3vw, 10rem);
+  font-size: clamp(2rem, 3vw, 10rem);
 
   color: var(--clr-neon-green);
 }
