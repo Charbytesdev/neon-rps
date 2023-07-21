@@ -26,13 +26,17 @@ function showWinner() {
   } else if (computerScore >= 5 && computerScore > playerScore) {
     winnerString = "Computer";
   }
-  resultScreen.textContent = `Winner: ${winnerString}`;
+  const winner = document.createElement("div");
+  winner.textContent = `Winner: ${winnerString}`;
+  resultScreen.appendChild(winner);
   resetGameScore();
 }
 
 //Show game score on screen
 function showGameScore(playerScore, computerScore) {
-  resultScreen.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
+  const gameScore = document.createElement("div");
+  gameScore.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
+  resultScreen.appendChild(gameScore);
   if (playerScore >= 5 || computerScore >= 5) showWinner();
 }
 
@@ -55,8 +59,8 @@ function showRoundResult(verdict) {
   const roundResult = document.createElement("div");
   roundResult.textContent = verdict;
   resultScreen.textContent = "";
-  updateGameScore(verdict);
   resultScreen.appendChild(roundResult);
+  updateGameScore(verdict);
 }
 
 //Play a single round of rps
