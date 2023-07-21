@@ -94,6 +94,8 @@ button.neon:hover::after {
 }
 
 .game-screen {
-  margin-bottom: 200px;
+  margin: auto;
+  display: flex;
   font-size: clamp(1.5rem, 3vw, 10rem);
+  color: var(--clr-neon);
 }
