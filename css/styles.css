@@ -21,18 +21,27 @@ body {
 
 .container {
   display: flex;
-  gap: 100px;
+  gap: clamp(1em, 4vw, 6.25rem);
   justify-content: center;
   align-items: flex-end;
-  margin: 0 520px 80px 0;
+  margin-bottom: 5em;
   display: flex;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 40em) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
 }
 
 button.neon {
   color: var(--clr-neon);
   padding: 0.25em 1em;
   background: none;
-  font-size: 3rem;
+  font-size: clamp(1.8rem, 3vw, 10rem);
   cursor: pointer;
   background-color: none;
   border: var(--clr-neon) 0.125em solid;
