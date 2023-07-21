@@ -97,6 +97,9 @@ button.neon:hover::after {
 .result-screen {
   margin: auto;
   display: flex;
+  flex-direction: column;
+  gap: clamp(1em, 4vw, 6.25rem);
+  align-items: center;
   font-size: clamp(1.5rem, 3vw, 10rem);
   text-shadow: 1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black,
     -1px 1px 0 black;

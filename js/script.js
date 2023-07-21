@@ -52,8 +52,11 @@ function updateGameScore(verdict) {
 
 //Show round result on screen
 function showRoundResult(verdict) {
-  resultScreen.textContent = verdict;
+  const roundResult = document.createElement("div");
+  roundResult.textContent = verdict;
+  resultScreen.textContent = "";
   updateGameScore(verdict);
+  resultScreen.appendChild(roundResult);
 }
 
 //Play a single round of rps
