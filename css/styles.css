@@ -98,5 +98,7 @@ button.neon:hover::after {
   margin: auto;
   display: flex;
   font-size: clamp(1.5rem, 3vw, 10rem);
+  text-shadow: 1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black,
+    -1px 1px 0 black;
   color: var(--clr-neon);
 }
