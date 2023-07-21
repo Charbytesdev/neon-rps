@@ -28,9 +28,13 @@ function showWinner() {
     winnerString = "Computer";
   }
   const winner = document.createElement("div");
-  winner.textContent = `Winner: ${winnerString}`;
+  winner.textContent = `Winner: ${winnerString}!!!`;
+  const anyButton = document.createElement("div");
+  anyButton.textContent = `Press any button to continue`;
   resultScreen.appendChild(winner);
-  resetGameScore();
+  resultScreen.appendChild(anyButton);
+  document.addEventListener("keydown", endGame, { once: true });
+  document.addEventListener("mousedown", endGame, { once: true });
 }
 
 const endScreen = document.querySelector(".end-screen");
@@ -40,6 +44,7 @@ playAgain.addEventListener("click", startGame);
 function endGame() {
   gameScreen.style.display = "none";
   endScreen.style.display = "flex";
+  showWinner();
 }
 
 //Show game score on screen
