@@ -31,9 +31,10 @@ function showWinner() {
     winnerString = "Computer";
   }
   const winner = document.createElement("div");
-  winner.textContent = `Winner: ${winnerString}!!!`;
+  winner.textContent = `Winner: ${winnerString}!`;
   const anyButton = document.createElement("div");
   anyButton.textContent = `Press any key to continue`;
+  winner.id = "winner";
   resultScreen.appendChild(winner);
   resultScreen.appendChild(anyButton);
   document.addEventListener("keydown", endGame, { once: true });
