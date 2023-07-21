@@ -1,5 +1,6 @@
 :root {
-  --clr-neon: #83f52c;
+  --clr-neon-green: #83f52c;
+  --clr-neon-purple: #9d00ff;
   --clr-bg: hsl(317 100% 54%);
 }
 
@@ -10,7 +11,8 @@
 html,
 body,
 .start-screen,
-.game-screen {
+.game-screen,
+.end-screen {
   height: 100%;
   margin: 0;
 }
@@ -42,19 +44,17 @@ body {
 }
 
 button.neon {
-  color: var(--clr-neon);
+  color: var(--clr-neon-green);
   padding: 0.25em 1em;
   background: none;
   font-size: clamp(1.8rem, 3vw, 10rem);
   cursor: pointer;
   background-color: none;
-  border: var(--clr-neon) 0.125em solid;
+  border: var(--clr-neon-green) 0.125em solid;
 
   border-radius: 0.25em;
-  text-shadow: 1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black,
-    -1px 1px 0 black;
 
-  box-shadow: inset 0 0 1em var(--clr-neon), 0 0 1em var(--clr-neon);
+  box-shadow: inset 0 0 1em var(--clr-neon-green), 0 0 1em var(--clr-neon-green);
   position: relative;
 }
 
@@ -62,7 +62,7 @@ button.neon::before {
   pointer-events: none;
   content: "";
   position: absolute;
-  background: var(--clr-neon);
+  background: var(--clr-neon-green);
   top: 0;
   bottom: 0;
   right: 0;
@@ -85,9 +85,9 @@ button.neon::after {
   bottom: 0;
   right: 0;
   left: 0;
-  box-shadow: 0 0 2em 0.5em var(--clr-neon);
+  box-shadow: 0 0 2em 0.5em var(--clr-neon-green);
   opacity: 0;
-  background-color: var(--clr-neon);
+  background-color: var(--clr-neon-green);
   z-index: -1;
   transition: opacity 100ms linear;
 }
@@ -109,16 +109,36 @@ button.neon:hover::after {
   gap: clamp(1em, 4vw, 6.25rem);
   align-items: center;
   font-size: clamp(1.5rem, 3vw, 10rem);
-  text-shadow: 1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black,
-    -1px 1px 0 black;
-  color: var(--clr-neon);
+
+  color: var(--clr-neon-green);
 }
 
-.start-screen {
+.start-screen,
+.end-screen {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.start.neon {
-  font-size: clamp(2.5rem, 3vw, 10rem);
+.start.neon,
+.end.neon {
+  font-size: clamp(3rem, 5vw, 4rem);
+}
+
+button.neon,
+#game-over,
+.result-screen {
+  text-shadow: 1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black,
+    -1px 1px 0 black;
+}
+
+#game-over {
+  font-size: clamp(3rem, 10vw, 10rem);
+  color: hsl(277, 100%, 50%);
+  box-shadow: inset 0 0 0.4em var(--clr-neon-purple),
+    0 0 0.4em var(--clr-neon-purple);
+  border-radius: 1em;
+  padding: 20px;
+  pointer-events: none;
 }
