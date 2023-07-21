@@ -22,19 +22,19 @@ function resetGameScore() {
 
 //Show winner when someone reaches 5 points
 function showWinner() {
-  let winnerString = "";
-  if (playerScore >= 5 && computerScore >= 5 && playerScore == computerScore) {
-    winnerString = "BOTH!";
-  } else if (playerScore >= 5 && playerScore > computerScore) {
-    winnerString = "Player";
-  } else if (computerScore >= 5 && computerScore > playerScore) {
-    winnerString = "Computer";
-  }
   const winner = document.createElement("div");
-  winner.textContent = `Winner: ${winnerString}!`;
+  winner.id = "winner";
+
+  if (playerScore >= 5 && computerScore >= 5 && playerScore == computerScore) {
+    winner.textContent = "IT'S A TIE!";
+  } else if (playerScore >= 5 && playerScore > computerScore) {
+    winner.textContent = "YOU WIN!";
+  } else if (computerScore >= 5 && computerScore > playerScore) {
+    winner.textContent = "YOU LOSE.";
+  }
+
   const anyButton = document.createElement("div");
   anyButton.textContent = `Press any key to continue`;
-  winner.id = "winner";
   resultScreen.appendChild(winner);
   resultScreen.appendChild(anyButton);
   document.addEventListener("keydown", endGame, { once: true });
