@@ -50,7 +50,8 @@ button.neon {
   border: var(--clr-neon) 0.125em solid;
 
   border-radius: 0.25em;
-  text-shadow: 0 0 0.125em hsla(0, 0%, 100%, 0.267), 0 0 0.125em currentColor;
+  text-shadow: 1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black,
+    -1px 1px 0 black;
 
   box-shadow: inset 0 0 1em var(--clr-neon), 0 0 1em var(--clr-neon);
   position: relative;
@@ -115,11 +116,4 @@ button.neon:hover::after {
 .start-screen {
   justify-content: center;
   align-items: center;
-}
-
-.start-screen a {
-  color: #83f52c;
-  font-size: 50px;
-  border: 5px solid currentColor;
-  border-radius: 5px;
 }
