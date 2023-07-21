@@ -1,4 +1,5 @@
-const body = document.querySelector("body");
+const gameScreen = document.querySelector(".game-screen");
+const resultScreen = document.querySelector(".result-screen");
 
 let computerScore = 0;
 let playerScore = 0;
@@ -14,29 +15,47 @@ function getComputerChoice() {
 function resetGameScore() {
   computerScore = 0;
   playerScore = 0;
+  resultScreen.textContent = "";
+  document.removeEventListener("keydown", endGame);
+  document.removeEventListener("mousedown", endGame);
 }
 
 //Show winner when someone reaches 5 points
 function showWinner() {
-  const winnerDiv = document.createElement("div");
-  let winnerString = "";
+  const winner = document.createElement("div");
+  winner.id = "winner";
+
   if (playerScore >= 5 && computerScore >= 5 && playerScore == computerScore) {
-    winnerString = "BOTH!";
+    winner.textContent = "IT'S A TIE!";
   } else if (playerScore >= 5 && playerScore > computerScore) {
-    winnerString = "Player";
+    winner.textContent = "YOU WIN!";
   } else if (computerScore >= 5 && computerScore > playerScore) {
-    winnerString = "Computer";
+    winner.textContent = "YOU LOSE.";
   }
-  winnerDiv.textContent = `Winner: ${winnerString}`;
-  body.appendChild(winnerDiv);
+
+  const anyButton = document.createElement("div");
+  anyButton.textContent = `Press any key to continue`;
+  resultScreen.appendChild(winner);
+  resultScreen.appendChild(anyButton);
+  document.addEventListener("keydown", endGame, { once: true });
+  document.addEventListener("mousedown", endGame, { once: true });
+}
+
+const endScreen = document.querySelector(".end-screen");
+const playAgain = document.querySelector(".play-again-button");
+playAgain.addEventListener("click", startGame);
+
+function endGame() {
+  gameScreen.style.display = "none";
+  endScreen.style.display = "flex";
   resetGameScore();
 }
 
 //Show game score on screen
 function showGameScore(playerScore, computerScore) {
-  const score = document.createElement("div");
-  score.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
-  body.appendChild(score);
+  const gameScore = document.createElement("div");
+  gameScore.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
+  resultScreen.appendChild(gameScore);
   if (playerScore >= 5 || computerScore >= 5) showWinner();
 }
 
@@ -56,9 +75,10 @@ function updateGameScore(verdict) {
 
 //Show round result on screen
 function showRoundResult(verdict) {
-  const resultsContent = document.createElement("div");
-  resultsContent.textContent = verdict;
-  body.appendChild(resultsContent);
+  const roundResult = document.createElement("div");
+  roundResult.textContent = verdict;
+  resultScreen.textContent = "";
+  resultScreen.appendChild(roundResult);
   updateGameScore(verdict);
 }
 
@@ -85,10 +105,22 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+const startScreen = document.querySelector(".start-screen");
+const startButton = document.querySelector(".start-button");
+
+function startGame() {
+  gameScreen.style.display = "flex";
+  startScreen.style.display = "none";
+  endScreen.style.display = "none";
+}
+
+startButton.addEventListener("click", startGame);
+
 //Everytime a button is clicked, call playRound() with corresponding button class
-const buttons = document.querySelectorAll("button");
-buttons.forEach((button) =>
+const selectionButtons = document.querySelectorAll("button.selection");
+
+selectionButtons.forEach((button) =>
   button.addEventListener("click", () =>
-    playRound(button.classList[0], getComputerChoice())
+    playRound(button.id, getComputerChoice())
   )
 );
