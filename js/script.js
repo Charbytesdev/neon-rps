@@ -87,9 +87,9 @@ function playRound(playerSelection, computerSelection) {
 }
 
 //Everytime a button is clicked, call playRound() with corresponding button class
-const buttons = document.querySelectorAll("button");
-buttons.forEach((button) =>
+const selectionButtons = document.querySelectorAll("button.selection");
+selectionButtons.forEach((button) =>
   button.addEventListener("click", () =>
-    playRound(button.classList[0], getComputerChoice())
+    playRound(button.id, getComputerChoice())
   )
 );
