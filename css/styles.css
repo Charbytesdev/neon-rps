@@ -9,6 +9,7 @@
 
 html,
 body,
+.start-screen,
 .game-screen {
   height: 100%;
   margin: 0;
@@ -109,4 +110,16 @@ button.neon:hover::after {
   text-shadow: 1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black,
     -1px 1px 0 black;
   color: var(--clr-neon);
+}
+
+.start-screen {
+  justify-content: center;
+  align-items: center;
+}
+
+.start-screen a {
+  color: #83f52c;
+  font-size: 50px;
+  border: 5px solid currentColor;
+  border-radius: 5px;
 }
