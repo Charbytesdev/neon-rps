@@ -46,6 +46,7 @@ const playAgain = document.querySelector(".play-again-button");
 playAgain.addEventListener("click", startGame);
 
 function endGame() {
+  playAudio(buttonClickAudio);
   gameScreen.style.display = "none";
   endScreen.style.display = "flex";
   resetGameScore();
@@ -123,4 +124,15 @@ selectionButtons.forEach((button) =>
   button.addEventListener("click", () =>
     playRound(button.id, getComputerChoice())
   )
+);
+
+function playAudio(audio) {
+  audio.currentTime = 0;
+  audio.play();
+}
+
+const allButtons = document.querySelectorAll("button");
+const buttonClickAudio = document.querySelector("#button-click-audio");
+allButtons.forEach((button) =>
+  button.addEventListener("click", () => playAudio(buttonClickAudio))
 );
