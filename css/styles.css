@@ -121,8 +121,8 @@ button.neon:hover::after {
   align-items: center;
 }
 
-.start.neon,
-.end.neon {
+.start-button.neon,
+.play-again-button.neon {
   font-size: clamp(3rem, 5vw, 4rem);
 }
 
