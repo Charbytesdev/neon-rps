@@ -18,7 +18,6 @@ function resetGameScore() {
 
 //Show winner when someone reaches 5 points
 function showWinner() {
-  const winnerDiv = document.createElement("div");
   let winnerString = "";
   if (playerScore >= 5 && computerScore >= 5 && playerScore == computerScore) {
     winnerString = "BOTH!";
@@ -27,16 +26,13 @@ function showWinner() {
   } else if (computerScore >= 5 && computerScore > playerScore) {
     winnerString = "Computer";
   }
-  winnerDiv.textContent = `Winner: ${winnerString}`;
-  gameScreen.appendChild(winnerDiv);
+  gameScreen.textContent = `Winner: ${winnerString}`;
   resetGameScore();
 }
 
 //Show game score on screen
 function showGameScore(playerScore, computerScore) {
-  const score = document.createElement("div");
-  score.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
-  gameScreen.appendChild(score);
+  gameScreen.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
   if (playerScore >= 5 || computerScore >= 5) showWinner();
 }
 
@@ -56,9 +52,7 @@ function updateGameScore(verdict) {
 
 //Show round result on screen
 function showRoundResult(verdict) {
-  const resultsContent = document.createElement("div");
-  resultsContent.textContent = verdict;
-  gameScreen.appendChild(resultsContent);
+  gameScreen.textContent = verdict;
   updateGameScore(verdict);
 }
 
