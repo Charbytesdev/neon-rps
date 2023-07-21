@@ -20,6 +20,17 @@ function resetGameScore() {
   document.removeEventListener("mousedown", endGame);
 }
 
+const endScreen = document.querySelector(".end-screen");
+const playAgain = document.querySelector(".play-again-button");
+playAgain.addEventListener("click", startGame);
+
+function endGame() {
+  playAudio(buttonClickAudio);
+  gameScreen.style.display = "none";
+  endScreen.style.display = "flex";
+  resetGameScore();
+}
+
 //Show winner when someone reaches 5 points
 function showWinner() {
   const winner = document.createElement("div");
@@ -39,17 +50,6 @@ function showWinner() {
   resultScreen.appendChild(anyButton);
   document.addEventListener("keydown", endGame, { once: true });
   document.addEventListener("mousedown", endGame, { once: true });
-}
-
-const endScreen = document.querySelector(".end-screen");
-const playAgain = document.querySelector(".play-again-button");
-playAgain.addEventListener("click", startGame);
-
-function endGame() {
-  playAudio(buttonClickAudio);
-  gameScreen.style.display = "none";
-  endScreen.style.display = "flex";
-  resetGameScore();
 }
 
 //Show game score on screen
@@ -89,7 +89,6 @@ function playRound(playerSelection, computerSelection) {
   const constComputerSelection = computerSelection.toUpperCase();
   if (constPlayerSelection === constComputerSelection) {
     showRoundResult(`TIE YOU BOTH CHOSE ${constPlayerSelection}`);
-    return "TIE";
   } else if (
     (constPlayerSelection === "ROCK" &&
       constComputerSelection === "SCISSORS") ||
