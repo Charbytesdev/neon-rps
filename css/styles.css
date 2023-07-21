@@ -18,6 +18,7 @@ body,
 body {
   font-family: "Bebas Neue", sans-serif;
   background: url("../img/background.jpg");
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -116,4 +117,8 @@ button.neon:hover::after {
 .start-screen {
   justify-content: center;
   align-items: center;
+}
+
+.start.neon {
+  font-size: clamp(2.5rem, 3vw, 10rem);
 }
