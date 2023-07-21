@@ -34,15 +34,22 @@ function endGame() {
 //Show winner when someone reaches 5 points
 function showWinner() {
   const winner = document.createElement("div");
+  let color = "";
   winner.id = "winner";
 
   if (playerScore >= 5 && computerScore >= 5 && playerScore == computerScore) {
     winner.textContent = "IT'S A TIE!";
+    color = `#CCFF00`;
   } else if (playerScore >= 5 && playerScore > computerScore) {
     winner.textContent = "YOU WIN!";
+    color = `#1B03A3`;
   } else if (computerScore >= 5 && computerScore > playerScore) {
     winner.textContent = "YOU LOSE.";
+    color = `#FF3131`;
   }
+  winner.style.color = color;
+  winner.style.boxShadow = `inset 0 0 0.4em ${color},
+  0 0 0.4em ${color}`;
 
   const anyButton = document.createElement("div");
   anyButton.textContent = `Press any key to continue`;
@@ -88,7 +95,7 @@ function playRound(playerSelection, computerSelection) {
   const constPlayerSelection = playerSelection.toUpperCase();
   const constComputerSelection = computerSelection.toUpperCase();
   if (constPlayerSelection === constComputerSelection) {
-    showRoundResult(`TIE YOU BOTH CHOSE ${constPlayerSelection}`);
+    showRoundResult(`TIE! YOU BOTH CHOSE ${constPlayerSelection}`);
   } else if (
     (constPlayerSelection === "ROCK" &&
       constComputerSelection === "SCISSORS") ||
