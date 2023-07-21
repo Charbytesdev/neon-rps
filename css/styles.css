@@ -18,10 +18,10 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .btn-container {
-  align-self: center;
   display: flex;
   gap: clamp(1em, 4vw, 6.25rem);
   justify-content: center;
@@ -91,4 +91,9 @@ button.neon::after {
 button.neon:hover::before,
 button.neon:hover::after {
   opacity: 1;
+}
+
+.game-screen {
+  margin-bottom: 200px;
+  font-size: clamp(1.5rem, 3vw, 10rem);
 }
