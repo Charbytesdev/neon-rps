@@ -1,3 +1,4 @@
+const gameScreen = document.querySelector(".game-screen");
 const resultScreen = document.querySelector(".result-screen");
 
 let computerScore = 0;
@@ -30,6 +31,15 @@ function showWinner() {
   winner.textContent = `Winner: ${winnerString}`;
   resultScreen.appendChild(winner);
   resetGameScore();
+}
+
+const endScreen = document.querySelector(".end-screen");
+const playAgain = document.querySelector(".play-again-button");
+playAgain.addEventListener("click", startGame);
+
+function endGame() {
+  gameScreen.style.display = "none";
+  endScreen.style.display = "flex";
 }
 
 //Show game score on screen
@@ -86,13 +96,13 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-const startButton = document.querySelector("button.start");
-const gameScreen = document.querySelector(".game-screen");
 const startScreen = document.querySelector(".start-screen");
+const startButton = document.querySelector(".start-button");
 
 function startGame() {
   gameScreen.style.display = "flex";
   startScreen.style.display = "none";
+  endScreen.style.display = "none";
 }
 
 startButton.addEventListener("click", startGame);
