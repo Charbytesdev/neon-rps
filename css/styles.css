@@ -16,21 +16,22 @@ body {
   font-family: "Bebas Neue", sans-serif;
   background: url("../img/background.jpg");
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
-.container {
+.btn-container {
+  align-self: center;
   display: flex;
   gap: clamp(1em, 4vw, 6.25rem);
   justify-content: center;
-  align-items: flex-end;
   margin-bottom: 5em;
   display: flex;
   flex-wrap: wrap;
 }
 
 @media (max-width: 40em) {
-  .container {
+  .btn-container {
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
