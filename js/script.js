@@ -137,3 +137,15 @@ const buttonClickAudio = document.querySelector("#button-click-audio");
 allButtons.forEach((button) =>
   button.addEventListener("click", () => playAudio(buttonClickAudio))
 );
+
+const soundImage = document.querySelector("#unmute");
+
+function changeSoundImage(soundImage) {
+  if (soundImage.src.includes("/unmute.png")) {
+    soundImage.src = soundImage.src.replace("/unmute.png", "/mute.png");
+  } else {
+    soundImage.src = soundImage.src.replace("/mute", "/unmute");
+  }
+}
+
+soundImage.addEventListener("click", () => changeSoundImage(soundImage));
