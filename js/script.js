@@ -107,11 +107,13 @@ function playRound(playerSelection, computerSelection) {
 
 const startScreen = document.querySelector(".start-screen");
 const startButton = document.querySelector(".start-button");
+const backgroundMusic = document.querySelector("#background-music");
 
 function startGame() {
   gameScreen.style.display = "flex";
   startScreen.style.display = "none";
   endScreen.style.display = "none";
+  playAudio(backgroundMusic);
 }
 
 startButton.addEventListener("click", startGame);
