@@ -20,18 +20,36 @@ function resetGameScore() {
   document.removeEventListener("mousedown", endGame);
 }
 
+const endScreen = document.querySelector(".end-screen");
+const playAgain = document.querySelector(".play-again-button");
+playAgain.addEventListener("click", startGame);
+
+function endGame() {
+  playAudio(buttonClickAudio);
+  gameScreen.style.display = "none";
+  endScreen.style.display = "flex";
+  resetGameScore();
+}
+
 //Show winner when someone reaches 5 points
 function showWinner() {
   const winner = document.createElement("div");
+  let color = "";
   winner.id = "winner";
 
   if (playerScore >= 5 && computerScore >= 5 && playerScore == computerScore) {
     winner.textContent = "IT'S A TIE!";
+    color = `#CCFF00`;
   } else if (playerScore >= 5 && playerScore > computerScore) {
     winner.textContent = "YOU WIN!";
+    color = `#1B03A3`;
   } else if (computerScore >= 5 && computerScore > playerScore) {
     winner.textContent = "YOU LOSE.";
+    color = `#FF3131`;
   }
+  winner.style.color = color;
+  winner.style.boxShadow = `inset 0 0 0.4em ${color},
+  0 0 0.4em ${color}`;
 
   const anyButton = document.createElement("div");
   anyButton.textContent = `Press any key to continue`;
@@ -39,16 +57,6 @@ function showWinner() {
   resultScreen.appendChild(anyButton);
   document.addEventListener("keydown", endGame, { once: true });
   document.addEventListener("mousedown", endGame, { once: true });
-}
-
-const endScreen = document.querySelector(".end-screen");
-const playAgain = document.querySelector(".play-again-button");
-playAgain.addEventListener("click", startGame);
-
-function endGame() {
-  gameScreen.style.display = "none";
-  endScreen.style.display = "flex";
-  resetGameScore();
 }
 
 //Show game score on screen
@@ -87,8 +95,7 @@ function playRound(playerSelection, computerSelection) {
   const constPlayerSelection = playerSelection.toUpperCase();
   const constComputerSelection = computerSelection.toUpperCase();
   if (constPlayerSelection === constComputerSelection) {
-    showRoundResult(`TIE YOU BOTH CHOSE ${constPlayerSelection}`);
-    return "TIE";
+    showRoundResult(`TIE! YOU BOTH CHOSE ${constPlayerSelection}`);
   } else if (
     (constPlayerSelection === "ROCK" &&
       constComputerSelection === "SCISSORS") ||
@@ -123,4 +130,15 @@ selectionButtons.forEach((button) =>
   button.addEventListener("click", () =>
     playRound(button.id, getComputerChoice())
   )
+);
+
+function playAudio(audio) {
+  audio.currentTime = 0;
+  audio.play();
+}
+
+const allButtons = document.querySelectorAll("button");
+const buttonClickAudio = document.querySelector("#button-click-audio");
+allButtons.forEach((button) =>
+  button.addEventListener("click", () => playAudio(buttonClickAudio))
 );
