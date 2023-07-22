@@ -126,8 +126,11 @@ selectionButtons.forEach((button) =>
   )
 );
 
+//Audio
+const backgroundMusic = document.querySelector("#background-music");
+const buttonClickAudio = document.querySelector("#button-click-audio");
+
 function playBackgroundMusic() {
-  const backgroundMusic = document.querySelector("#background-music");
   backgroundMusic.play();
 }
 
@@ -137,7 +140,6 @@ function playSoundEffect(audio) {
 }
 
 const allButtons = document.querySelectorAll("button");
-const buttonClickAudio = document.querySelector("#button-click-audio");
 allButtons.forEach((button) =>
   button.addEventListener("click", () => playSoundEffect(buttonClickAudio))
 );
@@ -152,4 +154,17 @@ function changeSoundImage(soundImage) {
   }
 }
 
-soundImage.addEventListener("click", () => changeSoundImage(soundImage));
+function changeAudioState() {
+  if (!backgroundMusic.paused) {
+    backgroundMusic.pause();
+    buttonClickAudio.muted = true;
+  } else {
+    backgroundMusic.play();
+    buttonClickAudio.muted = false;
+  }
+}
+
+soundImage.addEventListener("click", () => {
+  changeSoundImage(soundImage);
+  changeAudioState();
+});
