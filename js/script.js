@@ -25,7 +25,7 @@ const playAgain = document.querySelector(".play-again-button");
 playAgain.addEventListener("click", startGame);
 
 function endGame() {
-  playAudio(buttonClickAudio);
+  playSoundEffect(buttonClickAudio);
   gameScreen.style.display = "none";
   endScreen.style.display = "flex";
   resetGameScore();
@@ -119,6 +119,7 @@ function startGame() {
   gameScreen.style.display = "flex";
   startScreen.style.display = "none";
   endScreen.style.display = "none";
+  playBackgroundMusic();
 }
 
 startButton.addEventListener("click", startGame);
@@ -132,13 +133,52 @@ selectionButtons.forEach((button) =>
   )
 );
 
-function playAudio(audio) {
+//Audio
+const backgroundMusic = document.querySelector("#background-music");
+const buttonClickAudio = document.querySelector("#button-click-audio");
+
+function playBackgroundMusic() {
+  if (!isMuted) backgroundMusic.play();
+}
+
+function pauseBackgroundMusic() {
+  backgroundMusic.pause();
+}
+
+function playSoundEffect(audio) {
   audio.currentTime = 0;
   audio.play();
 }
 
 const allButtons = document.querySelectorAll("button");
-const buttonClickAudio = document.querySelector("#button-click-audio");
 allButtons.forEach((button) =>
-  button.addEventListener("click", () => playAudio(buttonClickAudio))
+  button.addEventListener("click", () => playSoundEffect(buttonClickAudio))
 );
+
+const soundImage = document.querySelector("#unmute");
+
+function changeSoundImage(soundImage) {
+  if (soundImage.src.includes("/unmute.png")) {
+    soundImage.src = soundImage.src.replace("/unmute.png", "/mute.png");
+  } else {
+    soundImage.src = soundImage.src.replace("/mute", "/unmute");
+  }
+}
+
+let isMuted = false;
+function changeAudioState() {
+  if (!isMuted) {
+    isMuted = true;
+    pauseBackgroundMusic();
+    buttonClickAudio.muted = true;
+  } else {
+    isMuted = false;
+    playBackgroundMusic();
+    buttonClickAudio.muted = false;
+  }
+}
+
+soundImage.addEventListener("click", () => {
+  changeSoundImage(soundImage);
+  changeAudioState();
+});
