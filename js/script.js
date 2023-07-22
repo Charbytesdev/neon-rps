@@ -134,6 +134,10 @@ function playBackgroundMusic() {
   if (!isMuted) backgroundMusic.play();
 }
 
+function pauseBackgroundMusic() {
+  backgroundMusic.pause();
+}
+
 function playSoundEffect(audio) {
   audio.currentTime = 0;
   audio.play();
@@ -158,7 +162,7 @@ let isMuted = false;
 function changeAudioState() {
   if (!isMuted) {
     isMuted = true;
-    backgroundMusic.pause();
+    pauseBackgroundMusic();
     buttonClickAudio.muted = true;
   } else {
     isMuted = false;
