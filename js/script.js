@@ -25,7 +25,7 @@ const playAgain = document.querySelector(".play-again-button");
 playAgain.addEventListener("click", startGame);
 
 function endGame() {
-  playAudio(buttonClickAudio);
+  playSoundEffect(buttonClickAudio);
   gameScreen.style.display = "none";
   endScreen.style.display = "flex";
   resetGameScore();
@@ -131,7 +131,7 @@ function playBackgroundMusic() {
   backgroundMusic.play();
 }
 
-function playAudio(audio) {
+function playSoundEffect(audio) {
   audio.currentTime = 0;
   audio.play();
 }
@@ -139,7 +139,7 @@ function playAudio(audio) {
 const allButtons = document.querySelectorAll("button");
 const buttonClickAudio = document.querySelector("#button-click-audio");
 allButtons.forEach((button) =>
-  button.addEventListener("click", () => playAudio(buttonClickAudio))
+  button.addEventListener("click", () => playSoundEffect(buttonClickAudio))
 );
 
 const soundImage = document.querySelector("#unmute");
