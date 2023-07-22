@@ -1,12 +1,19 @@
-## Rock Paper Scissors
+## Neon - Rock Paper Scissors
 
-Rock Paper Scissors is a game made in Javascript, CSS and HTML
+Neon Themed Rock Paper Scissors is a web game made by me using Javascript, CSS and HTML.
+
+## Features
+
+[x] Start and Game-Over screens.
+[x] Neon themed buttons and text with animations.
+[x] Background music and sound effects (Mute button found on top left).
+[x] Compatible with various screen sizes (Including mobile).
 
 ## Deployment
 
-Available live at: https://charbytesdev.github.io/rock-paper-scissors
+Available live at: https://charbytesdev.github.io/neon-rps
 
-A game-website created with vanilla Javascript
+A web game created with vanilla Javascript and styled usign CSS.
 
 <div align="center">
  <img src="./img/preview_screenshot_01.png" alt="Preview Screenshot 1" width="800">
