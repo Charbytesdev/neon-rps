@@ -131,7 +131,7 @@ const backgroundMusic = document.querySelector("#background-music");
 const buttonClickAudio = document.querySelector("#button-click-audio");
 
 function playBackgroundMusic() {
-  backgroundMusic.play();
+  if (!isMuted) backgroundMusic.play();
 }
 
 function playSoundEffect(audio) {
@@ -154,12 +154,15 @@ function changeSoundImage(soundImage) {
   }
 }
 
+let isMuted = false;
 function changeAudioState() {
-  if (!backgroundMusic.paused) {
+  if (!isMuted) {
+    isMuted = true;
     backgroundMusic.pause();
     buttonClickAudio.muted = true;
   } else {
-    backgroundMusic.play();
+    isMuted = false;
+    playBackgroundMusic();
     buttonClickAudio.muted = false;
   }
 }

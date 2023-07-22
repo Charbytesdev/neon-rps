@@ -156,6 +156,7 @@ button.neon,
 .sound-button {
   margin: 1em 0px 0px 1em;
   height: clamp(3rem, 3vw, 5rem);
+  cursor: pointer;
 
   padding: 0;
   border: none;
