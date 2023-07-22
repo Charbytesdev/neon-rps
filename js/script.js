@@ -107,13 +107,12 @@ function playRound(playerSelection, computerSelection) {
 
 const startScreen = document.querySelector(".start-screen");
 const startButton = document.querySelector(".start-button");
-const backgroundMusic = document.querySelector("#background-music");
 
 function startGame() {
   gameScreen.style.display = "flex";
   startScreen.style.display = "none";
   endScreen.style.display = "none";
-  playAudio(backgroundMusic);
+  playBackgroundMusic();
 }
 
 startButton.addEventListener("click", startGame);
@@ -126,6 +125,11 @@ selectionButtons.forEach((button) =>
     playRound(button.id, getComputerChoice())
   )
 );
+
+function playBackgroundMusic() {
+  const backgroundMusic = document.querySelector("#background-music");
+  backgroundMusic.play();
+}
 
 function playAudio(audio) {
   audio.currentTime = 0;
