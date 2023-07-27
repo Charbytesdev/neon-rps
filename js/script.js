@@ -138,6 +138,7 @@ const backgroundMusic = document.querySelector("#background-music");
 const buttonClickAudio = document.querySelector("#button-click-audio");
 
 function playBackgroundMusic() {
+  backgroundMusic.volume = 0.3;
   if (!isMuted) backgroundMusic.play();
 }
 
